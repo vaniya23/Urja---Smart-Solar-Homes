@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Form </title>
+        <link rel="stylesheet" type="text/css" href="register.css">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>  <!-- for ion-icons -->
+
+        <script type="text/javascript">
+            function validate() {
+                let nameElement = document.getElementById("uname");
+                let phoneElement = document.getElementById("uphone");
+                let emailElement = document.getElementById("uemail");
+                let stateElement = document.getElementById("ustate");
+                let elec_numElement = document.getElementById("uelec_num");
+                let elec_compElement = document.getElementById("uelec_comp");
+                let passwordElement = document.getElementById("upassword");
+                let confirm_passwordElement = document.getElementById("uconfirm_password");
+
+                let name = nameElement.value;
+                let phone = phoneElement.value;
+                let email = emailElement.value;
+                let state = stateElement.value;
+                let elec_num = elec_numElement.value;
+                let elec_comp = elec_compElement.value;
+                let password = passwordElement.value;
+                let confirm_password = confirm_passwordElement.value;
+
+                let regExp_name = new RegExp("^[a-zA-Z]+$");
+                let regExp_phone = new RegExp("^[0-9]{10}$");
+                let regExp_email = new RegExp("^[a-zA-Z0-9_\.\-]+@[a-zA-Z_]+\.[a-zA-Z]{2,3}$");
+                let regExp_state = new RegExp("^[a-zA-Z ]+$");
+                let regExp_elec_num = new RegExp("^[0-9]{13}$");
+                let regExp_elec_comp = new RegExp("^[a-zA-Z ]+$");
+                let regExp_password = new RegExp("^[a-zA-Z0-9@\$#]{6,12}$"); 
+
+                if(! regExp_name.test(name)) {
+                    alert("Provided Name is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_phone.test(phone)) {
+                    alert("Provided Phone Number is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_email.test(email)) {
+                    alert("Provided Email Address is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_state.test(state)) {
+                    alert("Provided State is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_elec_num.test(elec_num)) {
+                    alert("Provided Electricity Consumer Number is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_elec_comp.test(elec_comp)) {
+                    alert("Provided Electricity Distribution Company is not correct."); 
+                    return false;
+                }
+
+                if(! regExp_password.test(password)) {
+                    alert("Provided Password is not correct."); 
+                    return false;
+                }
+
+                if(password !== confirm_password) {
+                    alert("Both Passwords do not match."); 
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+
+            <div class="r_form_wrap">
+                
+                <div class="title">
+                    <p>Registration Form</p>
+                </div>
+
+                <div class="r_form">
+
+                    <form action="registerServlet" method="post" onsubmit="return validate()">
+
+                        <div class="input_wrap">
+                            <label for="name">Name</label>  
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="person-sharp"></ion-icon>
+                                </span>
+                                <input type="text" name="uname" class="input" id="uname" required>
+                            </div>
+                        </div>
+                        
+                        <div class="input_wrap">
+                            <label for="phone">Phone No.</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="call-sharp"></ion-icon>
+                                </span>
+                                <input type="phone" name="uphone" class="input" id="uphone" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="email">Email Address</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="mail-sharp"></ion-icon>
+                                </span>
+                                <input type="email" name="uemail" class="input" id="uemail" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="state">State</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="location-sharp"></ion-icon>
+                                </span>
+                                <input type="text" name="ustate" class="input" id="ustate" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="elec_num">Electricity Consumer No.</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="bulb-sharp"></ion-icon>
+                                </span>
+                                <input type="number" name="uelec_num" class="input" id="uelec_num" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="elec_comp">Electricity Distribution Company</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="briefcase-sharp"></ion-icon>
+                                </span>
+                                <input type="text" name="uelec_comp" class="input" id="uelec_comp" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="password">Password</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="key-sharp"></ion-icon>
+                                </span>
+                                <input type="password" name="upassword" class="input" id="upassword" required>
+                            </div>
+                        </div>
+
+                        <div class="input_wrap">
+                            <label for="confirm_password">Confirm Password</label>
+                            <div class="input_item">
+                                <span class="icon">
+                                    <ion-icon name="key-sharp"></ion-icon>
+                                </span>
+                                <input type="password" name="uconfirm_password" class="input" id="uconfirm_password" required>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="input_wrap">
+                            <label>Gender</label>
+                            <div class="input_radio">
+                                <div class="input_radio_item">
+                                    <input type="radio" id="male" name="gender" class="radio" value="male">
+                                    <label for="male" class="radio_mark">
+                                        <ion-icon class="i" name="male-sharp"></ion-icon>
+                                    Male</label>
+                                </div>
+                                <div class="input_radio_item">
+                                    <input type="radio" id="female" name="gender" class="radio" value="female">
+                                    <label for="female" class="radio_mark">
+                                        <ion-icon class="i" name="female-sharp"></ion-icon>
+                                        Female</label>
+                                </div>
+                                <div class="input_radio_item">
+                                    <input type="radio" id="others" name="gender" class="radio" value="others">
+                                    <label for="others" class="radio_mark">
+                                        <ion-icon class="i" name="male-female-sharp"></ion-icon>
+                                        Others</label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <button>Register</button> -->
+
+                        <input type="submit" value="Register" name="register" id="register">
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>
